@@ -4,9 +4,9 @@ import { useEffect } from "react";
 
 export default function InstagramEmbeds() {
   useEffect(() => {
-    // @ts-ignore
+    // @@ts-expect-error
     if ((window as any).instgrm?.Embeds) {
-      // @ts-ignore
+      // @@ts-expect-error
       (window as any).instgrm.Embeds.process();
     }
   }, []);

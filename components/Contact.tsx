@@ -32,12 +32,12 @@ export default function Contact() {
         </form>
         <div className="card">
           <h3>Outros canais</h3>
-          <p><strong>E‑mail:</strong> <a href="mailto:contato@vitorhenrique.dev">contato@vitorhenrique.dev</a></p>
-          <p><strong>WhatsApp:</strong> <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">(00) 00000‑0000</a></p>
+          <p><strong>E‑mail:</strong> <a href="mailto:contato@vhpsantos@gmail.com">vhpsantos@gmail.com</a></p>
+          <p><strong>WhatsApp:</strong> <a href="https://wa.me/5575981197497?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento." target="_blank" rel="noopener">(75) 98119-7497</a></p>
           <div className="socials" style={{ marginTop: 10 }}>
-            <a href="#" aria-label="GitHub">GitHub</a>
-            <a href="#" aria-label="LinkedIn">LinkedIn</a>
-            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="https://github.com/vitorhenr1que" target="_blank" aria-label="GitHub">GitHub</a>
+            <a href="https://www.linkedin.com/in/vitor-henrique-130b46159/" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://www.instagram.com/vitor_henr1que/" aria-label="Instagram">Instagram</a>
           </div>
         </div>
       </div>

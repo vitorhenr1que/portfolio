@@ -1,6 +1,24 @@
 "use client";
 import { useEffect } from "react";
 
+// Tipos mínimos (o que seu código realmente usa)
+interface SRInstance {
+  reveal(
+    selector: string | HTMLElement | NodeListOf<Element>,
+    options?: Record<string, unknown>
+  ): SRInstance;
+  clean(selector: string | HTMLElement | NodeListOf<Element>): void;
+  destroy(): void;
+}
+type SRFn = (options?: {
+  distance?: string;
+  duration?: number;
+  delay?: number;
+  easing?: string;
+  cleanup?: boolean;
+  viewFactor?: number;
+}) => SRInstance;
+
 export default function Effects() {
   useEffect(() => {
     const reduce =
@@ -11,9 +29,19 @@ export default function Effects() {
     let cleanup = () => {};
 
     (async () => {
-      const mod = await import("scrollreveal");
-      const scrollReveal = (mod as any).default ?? mod;
-      const sr = scrollReveal({ distance: "24px", duration: 800, delay: 60, easing: "cubic-bezier(0.5,0,0,1)", cleanup: true, viewFactor: 0.12 });
+      // Import dinâmico e “cast” para a função chamável
+      const mod = (await import("scrollreveal")) as unknown as SRFn | { default: SRFn };
+      const ScrollReveal: SRFn = (typeof mod === "function" ? mod : mod.default) as SRFn;
+
+      const sr = ScrollReveal({
+        distance: "24px",
+        duration: 800,
+        delay: 60,
+        easing: "cubic-bezier(0.5,0,0,1)",
+        cleanup: true,
+        viewFactor: 0.12,
+      });
+
       sr.reveal(".hero .eyebrow", { origin: "left" });
       sr.reveal(".hero h1", { origin: "bottom", delay: 100 });
       sr.reveal(".hero .subhead", { origin: "bottom", delay: 150 });
@@ -32,6 +60,7 @@ export default function Effects() {
       sr.reveal("#contato .form", { origin: "left" });
       sr.reveal("#contato .card", { origin: "right" });
       sr.reveal("footer .footer-grid", { origin: "bottom" });
+
       cleanup = () => { try { sr.destroy(); } catch {} };
     })();
 

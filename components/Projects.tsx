@@ -28,7 +28,7 @@ export default function Projects() {
       {/* @ts-expect error Async Server Component */}
       <GithubRepos />
 
-      <h3 style={{ margin: "26px 0 10px" }}>Áudio Visual</h3>
+      <h3 id="audio-visual" style={{ margin: "26px 0 10px" }}>Áudio Visual</h3>
       <p className="tag">Confira algumas das minhas produções no Instagram</p>
       <div className="grid cols-3">
         {["DNBnc_cuJgg", "DKVTGaISIyP", "DI1PkbIM92i"].map((slug) => (

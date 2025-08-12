@@ -7,10 +7,10 @@ export function useTheme() {
   useEffect(() => {
     const root = document.documentElement;
     const saved = localStorage.getItem("vh-theme");
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    const initialLight = saved === "light" || (!saved && prefersLight);
-    if (initialLight) root.classList.add("light");
-    setIsLight(root.classList.contains("light"));
+    const prefersLight = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialLight = saved === "dark" || (!saved && prefersLight);
+    if (initialLight) root.classList.add("dark");
+    setIsLight(root.classList.contains("dark"));
   }, []);
 
   function toggle() {
